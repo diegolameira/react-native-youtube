@@ -3,6 +3,7 @@ package com.inprogress.reactnativeyoutube;
 import android.app.FragmentManager;
 import android.os.Build;
 import android.os.Parcelable;
+import android.content.pm.ActivityInfo;
 import android.support.annotation.Nullable;
 import android.widget.FrameLayout;
 
@@ -68,7 +69,11 @@ public class YouTubeView extends FrameLayout {
                     // https://stackoverflow.com/a/34508430/61072
                     fragmentManager.beginTransaction().remove(mVideoFragment).commitAllowingStateLoss();
                 }
+
             }
+            getReactContext()
+                .getCurrentActivity()
+                .setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         super.onDetachedFromWindow();
     }
